@@ -6,7 +6,7 @@ namespace Paldi.Web.Modules
     {
         public HomeModule()
         {
-            Get["/"] = parameters => "Hello World";
+            Get["/"] = parameters => View["home"];
         }
     }
 }
