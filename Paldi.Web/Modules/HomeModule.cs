@@ -6,7 +6,9 @@ namespace Paldi.Web.Modules
     {
         public HomeModule()
         {
-            Get["/"] = parameters => View["home"];
+            After += ctx => ctx.ViewBag.Title = "Палди";
+
+            Get["/"] = parameters => View["index"];
         }
     }
 }
