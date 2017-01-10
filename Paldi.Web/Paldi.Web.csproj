@@ -86,6 +86,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\app.css" />
+    <Content Include="Content\css\foundation.css" />
+    <Content Include="Content\css\foundation.min.css" />
+    <Content Include="Content\js\app.js" />
+    <Content Include="Content\js\vendor\foundation.js" />
+    <Content Include="Content\js\vendor\foundation.min.js" />
+    <Content Include="Content\js\vendor\jquery.js" />
+    <Content Include="Content\js\vendor\what-input.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
