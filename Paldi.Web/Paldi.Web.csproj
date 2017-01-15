@@ -95,6 +95,7 @@
     <Content Include="Content\js\vendor\jquery.js" />
     <Content Include="Content\js\vendor\what-input.js" />
     <Content Include="packages.config" />
+    <Content Include="Views\404.html" />
     <Content Include="Views\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -109,6 +110,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\StatusCodeHandler.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\VersionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
