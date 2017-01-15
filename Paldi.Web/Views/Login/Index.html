@@ -1,0 +1,40 @@
+﻿@Master['layout']
+
+@Section['Content']
+
+<form method="POST">
+    <div class="row">
+        <div class="large-offset-2 columns">
+            <div class="row">
+                <div class="column">
+                    <h4>Вход</h4>
+                </div>
+            </div>
+
+            @If.HasError
+                <div class="alert callout large-6">
+                    <strong>Не удается войти</strong>.<br/>
+                    Пожалуйста, проверьте правильность написания <strong>логина</strong> и <strong>пароля</strong>.
+                </div>
+            @EndIf
+
+            <div class="row">
+                <div class="column large-4">
+                    <input type="text" placeholder="логин" name="login" value="@Model.Login">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column large-4">
+                    <input type="password" placeholder="пароль" name="password">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <button type="submit" class="button">Войти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@EndSection

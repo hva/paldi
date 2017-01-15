@@ -60,6 +60,10 @@
       <HintPath>..\packages\Nancy.1.4.1\lib\net40\Nancy.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Nancy.Authentication.Forms, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.Authentication.Forms.1.4.1\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Nancy.Owin, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nancy.Owin.1.4.1\lib\net40\Nancy.Owin.dll</HintPath>
       <Private>True</Private>
@@ -96,6 +100,8 @@
     <Content Include="Content\js\vendor\what-input.js" />
     <Content Include="packages.config" />
     <Content Include="Views\404.html" />
+    <Content Include="Views\Admin\Index.html" />
+    <Content Include="Views\Login\Index.html" />
     <Content Include="Views\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -110,11 +116,17 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\StatusCodeHandler.cs" />
+    <Compile Include="Infrastructure\UserIdentity.cs" />
+    <Compile Include="Infrastructure\UserMapper.cs" />
+    <Compile Include="Modules\AdminModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="Modules\LoginModule.cs" />
     <Compile Include="Modules\VersionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
