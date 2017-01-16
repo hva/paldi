@@ -5,9 +5,9 @@ namespace Paldi.Web.Infrastructure
 {
     public class UserIdentity : IUserIdentity
     {
-        public UserIdentity()
+        public UserIdentity(string userName)
         {
-            UserName = "admin";
+            UserName = userName;
             Claims = new List<string>();
         }
 
