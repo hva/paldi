@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using Dapper;
 using MySql.Data.MySqlClient;
 using Nancy.Security;
+using Paldi.Web.Entities;
 using Paldi.Web.Infrastructure;
 
 namespace Paldi.Web.Data
@@ -19,22 +20,22 @@ namespace Paldi.Web.Data
 
         public bool TryLogin(string login, string password, out Guid guid)
         {
+            guid = Guid.Empty;
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
 
-                guid = Guid.Empty;
                 var p = new { Login = login };
-                var user = connection.Query("SELECT guid, password FROM users WHERE login = @Login", p).FirstOrDefault();
+                var user = connection.Query<User>("SELECT guid, password FROM users WHERE login = @Login", p).FirstOrDefault();
                 if (user == null)
                 {
                     return false;
                 }
-                if (!VerifyPasswordHash(user.password, password))
+                if (!VerifyPasswordHash(user.Password, password))
                 {
                     return false;
                 }
-                guid = new Guid(user.guid);
+                guid = new Guid(user.Guid);
                 return true;
             }
         }
@@ -46,10 +47,10 @@ namespace Paldi.Web.Data
                 connection.Open();
 
                 var p = new { Guid = guid };
-                var user = connection.Query("SELECT login FROM users WHERE guid = @Guid", p).FirstOrDefault();
+                var user = connection.Query<User>("SELECT login FROM users WHERE guid = @Guid", p).FirstOrDefault();
                 return (user == null)
                     ? null
-                    : new UserIdentity(user.login);
+                    : new UserIdentity(user.Login);
             }
         }
 
