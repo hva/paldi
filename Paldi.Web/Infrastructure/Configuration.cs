@@ -6,7 +6,7 @@ namespace Paldi.Web.Infrastructure
     {
         public Configuration()
         {
-            ConnectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
+            ConnectionString = ConfigurationManager.AppSettings["MySQL"];
         }
 
         public string ConnectionString { get; }
