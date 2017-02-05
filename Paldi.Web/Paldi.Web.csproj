@@ -125,9 +125,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Entities\User.cs" />
     <Compile Include="Data\IUsersRepository.cs" />
     <Compile Include="Data\UsersRepository.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\Configuration.cs" />
     <Compile Include="Infrastructure\IConfiguration.cs" />

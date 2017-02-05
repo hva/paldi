@@ -3,7 +3,7 @@ using System.Linq;
 using Dapper;
 using MySql.Data.MySqlClient;
 using Nancy.Security;
-using Paldi.Web.Entities;
+using Paldi.Web.Data.Entities;
 using Paldi.Web.Infrastructure;
 using Paldi.Web.Infrastructure.Services;
 
@@ -28,12 +28,12 @@ namespace Paldi.Web.Data
                 connection.Open();
 
                 var p = new { Login = login };
-                var user = connection.Query<User>("SELECT guid, password FROM users WHERE login = @Login", p).FirstOrDefault();
+                var user = connection.Query<User>("SELECT guid, password_hash PasswordHash FROM users WHERE login = @Login", p).FirstOrDefault();
                 if (user == null)
                 {
                     return false;
                 }
-                if (!passwordService.VerifyPasswordHash(user.Password, password))
+                if (!passwordService.VerifyPasswordHash(user.PasswordHash, password))
                 {
                     return false;
                 }
