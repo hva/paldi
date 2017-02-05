@@ -130,6 +130,8 @@
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\Configuration.cs" />
     <Compile Include="Infrastructure\IConfiguration.cs" />
+    <Compile Include="Infrastructure\Services\IPasswordService.cs" />
+    <Compile Include="Infrastructure\Services\PasswordService.cs" />
     <Compile Include="Infrastructure\StatusCodeHandler.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Infrastructure\UserMapper.cs" />
