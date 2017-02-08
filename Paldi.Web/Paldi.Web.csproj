@@ -98,14 +98,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\app.css" />
-    <Content Include="Content\css\foundation.css" />
-    <Content Include="Content\css\foundation.min.css" />
-    <Content Include="Content\js\app.js" />
-    <Content Include="Content\js\vendor\foundation.js" />
-    <Content Include="Content\js\vendor\foundation.min.js" />
-    <Content Include="Content\js\vendor\jquery.js" />
-    <Content Include="Content\js\vendor\what-input.js" />
     <Content Include="packages.config" />
     <Content Include="parameters.xml" />
     <Content Include="Views\404.html" />
@@ -144,7 +136,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\css\" />
+    <Folder Include="Content\js\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
