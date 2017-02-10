@@ -100,12 +100,12 @@
   <ItemGroup>
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\img\logo.png" />
-    <Content Include="Content\img\logo_100_160.png" />
     <Content Include="packages.config" />
     <Content Include="parameters.xml" />
     <Content Include="Views\404.html" />
     <Content Include="Views\Admin\Index.html" />
     <Content Include="Views\Login\Index.html" />
+    <Content Include="Views\PageHeader.html" />
     <Content Include="Views\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

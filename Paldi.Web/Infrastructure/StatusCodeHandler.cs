@@ -20,10 +20,11 @@ namespace Paldi.Web.Infrastructure
 
         public void Handle(HttpStatusCode statusCode, NancyContext context)
         {
-            var response = viewRenderer.RenderView(context, "404");
+            var response = viewRenderer.RenderView(context, "404.html");
             response.StatusCode = statusCode;
             context.Response = response;
             context.ViewBag.Title = "Страница не найдена";
+            context.ViewBag.Header = "404";
         }
     }
 }
