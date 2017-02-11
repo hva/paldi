@@ -1,4 +1,5 @@
 ﻿using Nancy;
+using Paldi.Web.Infrastructure.Extensions;
 
 namespace Paldi.Web.Modules
 {
@@ -6,7 +7,9 @@ namespace Paldi.Web.Modules
     {
         public HomeModule()
         {
-            Get["/"] = _ => View["index"];
+            this.AssignViewBag();
+
+            Get["/"] = _ => View["Index.html"];
         }
     }
 }

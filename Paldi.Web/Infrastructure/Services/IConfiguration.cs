@@ -1,4 +1,4 @@
-﻿namespace Paldi.Web.Infrastructure
+﻿namespace Paldi.Web.Infrastructure.Services
 {
     public interface IConfiguration
     {

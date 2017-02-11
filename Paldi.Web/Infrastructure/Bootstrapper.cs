@@ -3,6 +3,7 @@ using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 using Paldi.Web.Data;
+using Paldi.Web.Infrastructure.Services;
 
 namespace Paldi.Web.Infrastructure
 {
@@ -17,13 +18,6 @@ namespace Paldi.Web.Infrastructure
             });
 
             base.ApplicationStartup(container, pipelines);
-        }
-
-        protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
-        {
-            context.ViewBag.Title = "Палди";
-
-            base.RequestStartup(container, pipelines, context);
         }
 
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)

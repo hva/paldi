@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Paldi.Web.Infrastructure
+namespace Paldi.Web.Infrastructure.Services
 {
     public class Configuration : IConfiguration
     {
