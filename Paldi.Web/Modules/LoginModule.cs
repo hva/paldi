@@ -2,7 +2,9 @@
 using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.ModelBinding;
+using Nancy.Security;
 using Paldi.Web.Data;
+using Paldi.Web.Infrastructure.Extensions;
 using Paldi.Web.ViewModels;
 
 namespace Paldi.Web.Modules
@@ -11,12 +13,16 @@ namespace Paldi.Web.Modules
     {
         public LoginModule(IUsersRepository usersRepository)
         {
-            Get["/login"] = _ => View["index", new LoginViewModel()];
+            this.AssignViewBag();
+
+            Get["/login"] = _ => View["Index.html", new LoginViewModel()];
 
             Get["/logout"] = _ => this.LogoutAndRedirect("/admin");
 
             Post["/login"] = parameters =>
             {
+                this.ValidateCsrfToken();
+
                 var model = this.Bind<LoginViewModel>();
 
                 Guid guid;
@@ -26,7 +32,7 @@ namespace Paldi.Web.Modules
                 }
 
                 model.HasError = true;
-                return View["index", model];
+                return View["Index.html", model];
             };
         }
     }

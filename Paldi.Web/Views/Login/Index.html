@@ -2,39 +2,39 @@
 
 @Section['Content']
 
-<form method="POST">
-    <div class="row">
-        <div class="large-offset-2 columns">
-            <div class="row">
-                <div class="column">
-                    <h4>Вход</h4>
-                </div>
-            </div>
+<h2 class="page-header">Вход</h2>
 
-            @If.HasError
-                <div class="alert callout large-6">
-                    <strong>Не удается войти</strong>.<br/>
-                    Пожалуйста, проверьте правильность написания <strong>логина</strong> и <strong>пароля</strong>.
-                </div>
-            @EndIf
-
-            <div class="row">
-                <div class="column large-4">
-                    <input type="text" placeholder="логин" name="login" value="@Model.Login">
-                </div>
-            </div>
-            <div class="row">
-                <div class="column large-4">
-                    <input type="password" placeholder="пароль" name="password">
-                </div>
-            </div>
-            <div class="row">
-                <div class="column">
-                    <button type="submit" class="button">Войти</button>
-                </div>
-            </div>
+@If.HasError
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <div class="alert alert-danger" role="alert">
+            <p>
+                <strong>Не удается войти.</strong>
+            </p>
+            <p>
+                Пожалуйста, проверьте правильность написания <strong>логина</strong> и <strong>пароля</strong>.
+            </p>
         </div>
     </div>
-</form>
+</div>
+@EndIf
 
+<form method="POST" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-xs-12 col-md-4">
+            <input class="form-control" type="text" placeholder="логин" name="login" value="@Model.Login" autofocus>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12 col-md-4">
+            <input class="form-control" type="password" placeholder="пароль" name="password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+    </div>
+    @AntiForgeryToken
+</form>
 @EndSection
