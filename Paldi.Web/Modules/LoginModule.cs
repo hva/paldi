@@ -25,10 +25,13 @@ namespace Paldi.Web.Modules
 
                 var model = this.Bind<LoginViewModel>();
 
-                Guid guid;
-                if (usersRepository.TryLogin(model.Login, model.Password, out guid))
+                if (!string.IsNullOrEmpty(model.Password))
                 {
-                    return this.LoginAndRedirect(guid, fallbackRedirectUrl: "/admin");
+                    Guid guid;
+                    if (usersRepository.TryLogin(model.Login, model.Password, out guid))
+                    {
+                        return this.LoginAndRedirect(guid, fallbackRedirectUrl: "/admin");
+                    }
                 }
 
                 model.HasError = true;

@@ -5,26 +5,32 @@ namespace Paldi.Web.Tests.Infrastructure.Services
 {
     public class PasswordServiceTest
     {
-        [Theory]
-        [InlineData("")]
-        [InlineData("123456")]
-        [InlineData("password")]
-        [InlineData("12345678")]
-        [InlineData("qwerty")]
-        [InlineData("12345")]
-        [InlineData("123456789")]
-        [InlineData("football")]
-        [InlineData("1234")]
-        [InlineData("1234567")]
-        [InlineData("baseball")]
-        public void PasswordTest(string password)
+        [Fact]
+        public void PasswordTest()
         {
             var service = new PasswordService();
-            var hash = service.HashPassword(password);
-            Assert.True(service.VerifyPasswordHash(hash, password));
 
-            password += "_";
-            Assert.False(service.VerifyPasswordHash(hash, password));
+            var passwords = new[]
+            {
+                "",
+                "123456",
+                "password",
+                "12345678",
+                "qwerty",
+                "12345",
+                "123456789",
+                "football",
+                "1234",
+                "1234567",
+                "baseball"
+            };
+
+            foreach (var password in passwords)
+            {
+                var hash = service.HashPassword(password);
+                Assert.True(service.VerifyPasswordHash(hash, password));
+                Assert.False(service.VerifyPasswordHash(hash, password + "_"));
+            }
         }
     }
 }
