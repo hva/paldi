@@ -6,10 +6,14 @@ namespace Paldi.Web.Infrastructure.Extensions
     {
         public static void AssignViewBag(this INancyModule module)
         {
-
             module.After += context =>
             {
-                context.ViewBag.Title = "Палди";
+                if (context.ViewBag.Title == null)
+                {
+                    context.ViewBag.Title = "Палди";
+                }
+
+                context.ViewBag.User = context.CurrentUser;
             };
         }
     }

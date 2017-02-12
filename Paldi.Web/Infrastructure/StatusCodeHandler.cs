@@ -24,7 +24,6 @@ namespace Paldi.Web.Infrastructure
             response.StatusCode = statusCode;
             context.Response = response;
             context.ViewBag.Title = "Страница не найдена";
-            context.ViewBag.Header = "404";
         }
     }
 }
