@@ -1,15 +1,14 @@
-﻿using Nancy;
-using Paldi.Web.Infrastructure.Extensions;
+﻿using System;
+using Nancy;
+using Paldi.Web.Models;
 
 namespace Paldi.Web.Modules
 {
     public class HomeModule : NancyModule
     {
-        public HomeModule()
+        public HomeModule(Func<NavigationModel> createModel)
         {
-            this.AssignViewBag();
-
-            Get["/"] = _ => View["Index.sshtml"];
+            Get["/"] = _ => View["Index.sshtml", createModel()];
         }
     }
 }

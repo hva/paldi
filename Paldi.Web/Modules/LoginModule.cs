@@ -4,18 +4,15 @@ using Nancy.Authentication.Forms;
 using Nancy.ModelBinding;
 using Nancy.Security;
 using Paldi.Web.Data;
-using Paldi.Web.Infrastructure.Extensions;
-using Paldi.Web.ViewModels;
+using Paldi.Web.Models;
 
 namespace Paldi.Web.Modules
 {
     public class LoginModule : NancyModule
     {
-        public LoginModule(IUsersRepository usersRepository)
+        public LoginModule(IUsersRepository usersRepository, Func<LoginModel> createModel)
         {
-            this.AssignViewBag();
-
-            Get["/login"] = _ => View["Index.sshtml", new LoginViewModel()];
+            Get["/login"] = _ => View["Index.sshtml", createModel()];
 
             Get["/logout"] = _ => this.LogoutAndRedirect("/");
 
@@ -23,7 +20,8 @@ namespace Paldi.Web.Modules
             {
                 this.ValidateCsrfToken();
 
-                var model = this.Bind<LoginViewModel>();
+                var model = createModel();
+                this.BindTo(model);
 
                 if (!string.IsNullOrEmpty(model.Password))
                 {

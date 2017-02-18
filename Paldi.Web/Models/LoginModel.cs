@@ -1,6 +1,6 @@
-﻿namespace Paldi.Web.ViewModels
+﻿namespace Paldi.Web.Models
 {
-    public class LoginViewModel
+    public class LoginModel : NavigationModel
     {
         public string Login { get; set; }
         public string Password { get; set; }
