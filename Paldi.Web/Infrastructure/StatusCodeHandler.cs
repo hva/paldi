@@ -23,7 +23,6 @@ namespace Paldi.Web.Infrastructure
             var response = viewRenderer.RenderView(context, "404.sshtml");
             response.StatusCode = statusCode;
             context.Response = response;
-            context.ViewBag.Title = "Страница не найдена";
         }
     }
 }

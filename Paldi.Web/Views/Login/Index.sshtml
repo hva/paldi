@@ -1,5 +1,7 @@
 ﻿@Master['Layout.sshtml']
 
+@Section['Title']Вход &middot; Палди@EndSection
+
 @Section['Content']
 
 <h2 class="page-header">Вход</h2>

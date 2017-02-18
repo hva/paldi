@@ -1,8 +1,10 @@
 ﻿@Master['Layout.sshtml']
 
+@Section['Title']Страница не найдена &middot; Палди@EndSection
+
 @Section['Content']
 
 <h2 class="page-header">404</h2>
-<p>@ViewBag.Title</p>
+<p>Страница не найдена</p>
 
 @EndSection

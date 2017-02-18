@@ -8,12 +8,6 @@ namespace Paldi.Web.Infrastructure.Extensions
         {
             module.After += context =>
             {
-                if (context.ViewBag.Title == null)
-                {
-                    context.ViewBag.Title = "Палди";
-                }
-
-                context.ViewBag.User = context.CurrentUser;
             };
         }
     }
