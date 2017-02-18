@@ -1,4 +1,4 @@
-﻿@Master['layout']
+﻿@Master['Layout.sshtml']
 
 @Section['Content']
 @EndSection

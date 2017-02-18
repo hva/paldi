@@ -15,9 +15,9 @@ namespace Paldi.Web.Modules
         {
             this.AssignViewBag();
 
-            Get["/login"] = _ => View["Index.html", new LoginViewModel()];
+            Get["/login"] = _ => View["Index.sshtml", new LoginViewModel()];
 
-            Get["/logout"] = _ => this.LogoutAndRedirect("/admin");
+            Get["/logout"] = _ => this.LogoutAndRedirect("/");
 
             Post["/login"] = parameters =>
             {
@@ -30,12 +30,12 @@ namespace Paldi.Web.Modules
                     Guid guid;
                     if (usersRepository.TryLogin(model.Login, model.Password, out guid))
                     {
-                        return this.LoginAndRedirect(guid, fallbackRedirectUrl: "/admin");
+                        return this.LoginAndRedirect(guid);
                     }
                 }
 
                 model.HasError = true;
-                return View["Index.html", model];
+                return View["Index.sshtml", model];
             };
         }
     }

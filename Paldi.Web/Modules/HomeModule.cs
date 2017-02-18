@@ -9,7 +9,7 @@ namespace Paldi.Web.Modules
         {
             this.AssignViewBag();
 
-            Get["/"] = _ => View["Index.html"];
+            Get["/"] = _ => View["Index.sshtml"];
         }
     }
 }
