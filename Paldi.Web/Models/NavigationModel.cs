@@ -15,6 +15,7 @@ namespace Paldi.Web.Models
         public NavigationModel Extend(NancyContext context)
         {
             Add("Nav", NavItems().ToArray());
+            Add("NavRight", NavRightItems(context).ToArray());
             return this;
         }
 
@@ -33,6 +34,13 @@ namespace Paldi.Web.Models
                 }
             };
             yield return new MenuItem {Url = "/contacts", Title = "Контакты"};
+        }
+
+        private static IEnumerable<MenuItem> NavRightItems(NancyContext context)
+        {
+            yield return (context.CurrentUser == null)
+                ? new MenuItem { Url = "/login", Title = "Войти" }
+                : new MenuItem { Url = "/logout", Title = "Выйти" };
         }
     }
 }

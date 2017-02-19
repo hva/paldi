@@ -31,7 +31,9 @@
                     @EndEach
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/login">Войти</a></li>
+                    @Each.NavRight
+                        @Partial['_NavMenuItem.sshtml', @Current]
+                    @EndEach
                 </ul>
             </div>
         </div>
