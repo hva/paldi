@@ -8,7 +8,7 @@ namespace Paldi.Web.Modules
     {
         public HomeModule(Func<NavigationModel> createModel)
         {
-            Get["/"] = _ => View["Index.sshtml", createModel()];
+            Get["/"] = _ => View["Index.sshtml", createModel().Extend(Context)];
         }
     }
 }

@@ -10,9 +10,11 @@ namespace Paldi.Web.Modules
 {
     public class LoginModule : NancyModule
     {
-        public LoginModule(IUsersRepository usersRepository, Func<LoginModel> createModel)
+        private const string key = "Login";
+
+        public LoginModule(IUsersRepository usersRepository, Func<NavigationModel> createModel)
         {
-            Get["/login"] = _ => View["Index.sshtml", createModel()];
+            Get["/login"] = _ => View["Index.sshtml", createModel().Extend(Context, key, new LoginModel())];
 
             Get["/logout"] = _ => this.LogoutAndRedirect("/");
 
@@ -20,8 +22,7 @@ namespace Paldi.Web.Modules
             {
                 this.ValidateCsrfToken();
 
-                var model = createModel();
-                this.BindTo(model);
+                var model = this.Bind<LoginModel>();
 
                 if (!string.IsNullOrEmpty(model.Password))
                 {
@@ -33,7 +34,7 @@ namespace Paldi.Web.Modules
                 }
 
                 model.HasError = true;
-                return View["Index.sshtml", model];
+                return View["Index.sshtml", createModel().Extend(Context, key, model)];
             };
         }
     }
