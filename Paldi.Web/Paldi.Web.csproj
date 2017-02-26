@@ -109,6 +109,9 @@
     <Content Include="Views\Layout.sshtml" />
     <Content Include="Views\_NavMenuItem.sshtml" />
     <Content Include="Views\Catalog\Index.sshtml" />
+    <Content Include="deploy.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

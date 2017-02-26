@@ -28,7 +28,7 @@ namespace Paldi.Web.Data
                 connection.Open();
 
                 var p = new { Login = login };
-                var user = connection.Query<User>("SELECT guid, password_hash PasswordHash FROM users WHERE login = @Login", p).FirstOrDefault();
+                var user = connection.Query<User>("SELECT guid, hash PasswordHash FROM users WHERE login = @Login", p).FirstOrDefault();
                 if (user == null)
                 {
                     return false;
