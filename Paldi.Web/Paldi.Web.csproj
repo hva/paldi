@@ -108,6 +108,7 @@
     <Content Include="Views\404.sshtml" />
     <Content Include="Views\Layout.sshtml" />
     <Content Include="Views\_NavMenuItem.sshtml" />
+    <Content Include="Views\Catalog\Index.sshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -133,6 +134,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\NavigationModel.cs" />
+    <Compile Include="Modules\CatalogModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\LoginModule.cs" />
     <Compile Include="Modules\VersionModule.cs" />

@@ -1,0 +1,7 @@
+﻿@Master['Layout.sshtml']
+
+@Section['Title']Каталог &middot; Палди@EndSection
+
+@Section['Content']
+<h2 class="page-header">Каталог</h2>
+@EndSection
