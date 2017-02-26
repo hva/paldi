@@ -1,4 +1,4 @@
-﻿namespace Paldi.Web.Infrastructure.Services
+﻿namespace Paldi.Web.Infrastructure.Services.Interfaces
 {
     public interface IPasswordService
     {

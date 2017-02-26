@@ -1,7 +1,7 @@
 ﻿using System;
 using Nancy.Security;
 
-namespace Paldi.Web.Data
+namespace Paldi.Web.Data.Repos.Interfaces
 {
     public interface IUsersRepository
     {

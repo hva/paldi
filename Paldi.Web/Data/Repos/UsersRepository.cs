@@ -4,10 +4,11 @@ using Dapper;
 using MySql.Data.MySqlClient;
 using Nancy.Security;
 using Paldi.Web.Data.Entities;
+using Paldi.Web.Data.Repos.Interfaces;
 using Paldi.Web.Infrastructure;
-using Paldi.Web.Infrastructure.Services;
+using Paldi.Web.Infrastructure.Services.Interfaces;
 
-namespace Paldi.Web.Data
+namespace Paldi.Web.Data.Repos
 {
     public class UsersRepository : IUsersRepository
     {

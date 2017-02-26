@@ -3,7 +3,7 @@ using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.ModelBinding;
 using Nancy.Security;
-using Paldi.Web.Data;
+using Paldi.Web.Data.Repos.Interfaces;
 using Paldi.Web.Models;
 
 namespace Paldi.Web.Modules
@@ -14,7 +14,10 @@ namespace Paldi.Web.Modules
 
         public LoginModule(IUsersRepository usersRepository, Func<NavigationModel> createModel)
         {
-            Get["/login"] = _ => View["Index.sshtml", createModel().Extend(Context, key, new LoginModel())];
+            Get["/login"] = _ => View[
+                "Index.sshtml",
+                createModel().With(Context).With(key, new LoginModel())
+            ];
 
             Get["/logout"] = _ => this.LogoutAndRedirect("/");
 
@@ -34,7 +37,10 @@ namespace Paldi.Web.Modules
                 }
 
                 model.HasError = true;
-                return View["Index.sshtml", createModel().Extend(Context, key, model)];
+                return View[
+                    "Index.sshtml",
+                    createModel().With(Context).With(key, model)
+                ];
             };
         }
     }

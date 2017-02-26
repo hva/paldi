@@ -1,37 +1,42 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Nancy;
+using Paldi.Web.Data.Repos.Interfaces;
 
 namespace Paldi.Web.Models
 {
     public class NavigationModel : Dictionary<string, object>
     {
-        public NavigationModel Extend(NancyContext context, string key, object value)
+        private readonly ICatalogRepository catalogRepository;
+
+        public NavigationModel(ICatalogRepository catalogRepository)
         {
-            Add(key, value);
-            return Extend(context);
+            this.catalogRepository = catalogRepository;
         }
 
-        public NavigationModel Extend(NancyContext context)
+        public NavigationModel With(NancyContext context)
         {
             Add("Nav", NavItems().ToArray());
             Add("NavRight", NavRightItems(context).ToArray());
             return this;
         }
 
-        private static IEnumerable<MenuItem> NavItems()
+        public NavigationModel With(string key, object value)
+        {
+            Add(key, value);
+            return this;
+        }
+
+        private IEnumerable<MenuItem> NavItems()
         {
             yield return new MenuItem {Url = "/service", Title = "Услуги"};
             yield return new MenuItem
             {
                 Url = "/catalog",
                 Title = "Каталог",
-                Items = new List<MenuItem>
-                {
-                    new MenuItem {Url = "/catalog/section1", Title = "Категория 1"},
-                    new MenuItem {Url = "/catalog/section2", Title = "Категория 2"},
-                    new MenuItem {Url = "/catalog/section3", Title = "Категория 3"},
-                }
+                Items = catalogRepository.GetSections().Select(
+                    x => new MenuItem { Url = "/catalog/" + x.Slug, Title = x.Name }
+                ).ToArray()
             };
             yield return new MenuItem {Url = "/contacts", Title = "Контакты"};
         }

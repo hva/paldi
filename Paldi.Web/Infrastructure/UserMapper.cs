@@ -2,7 +2,7 @@
 using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Security;
-using Paldi.Web.Data;
+using Paldi.Web.Data.Repos.Interfaces;
 
 namespace Paldi.Web.Infrastructure
 {

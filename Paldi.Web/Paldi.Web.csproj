@@ -112,6 +112,7 @@
     <Content Include="deploy.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Catalog\Section.sshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -123,13 +124,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Entities\CatalogSection.cs" />
     <Compile Include="Data\Entities\User.cs" />
-    <Compile Include="Data\IUsersRepository.cs" />
-    <Compile Include="Data\UsersRepository.cs" />
+    <Compile Include="Data\Repos\CatalogRepository.cs" />
+    <Compile Include="Data\Repos\Interfaces\ICatalogRepository.cs" />
+    <Compile Include="Data\Repos\Interfaces\IUsersRepository.cs" />
+    <Compile Include="Data\Repos\UsersRepository.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\Services\Configuration.cs" />
-    <Compile Include="Infrastructure\Services\IConfiguration.cs" />
-    <Compile Include="Infrastructure\Services\IPasswordService.cs" />
+    <Compile Include="Infrastructure\Services\Interfaces\IConfiguration.cs" />
+    <Compile Include="Infrastructure\Services\Interfaces\IPasswordService.cs" />
     <Compile Include="Infrastructure\Services\PasswordService.cs" />
     <Compile Include="Infrastructure\StatusCodeHandler.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />

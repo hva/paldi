@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using Paldi.Web.Infrastructure.Services.Interfaces;
 
 namespace Paldi.Web.Infrastructure.Services
 {

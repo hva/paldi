@@ -3,8 +3,6 @@ using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
-using Paldi.Web.Data;
-using Paldi.Web.Infrastructure.Services;
 
 namespace Paldi.Web.Infrastructure
 {
@@ -21,14 +19,6 @@ namespace Paldi.Web.Infrastructure
             });
 
             base.ApplicationStartup(container, pipelines);
-        }
-
-        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
-        {
-            base.ConfigureApplicationContainer(container);
-
-            container.Register<IConfiguration, Configuration>();
-            container.Register<IUsersRepository, UsersRepository>();
         }
     }
 }
