@@ -144,6 +144,12 @@
   <ItemGroup>
     <Folder Include="Content\js\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Paldi.Web.Migrations\Paldi.Web.Migrations.csproj">
+      <Project>{e7405dfd-f6ba-47d2-9040-b6e4b8bf2cb7}</Project>
+      <Name>Paldi.Web.Migrations</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
