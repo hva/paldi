@@ -29,7 +29,7 @@ namespace Paldi.Web.Models
 
         private IEnumerable<MenuItem> NavItems()
         {
-            yield return new MenuItem {Url = "/service", Title = "Услуги"};
+            yield return new MenuItem { Url = "/service", Title = "Услуги" };
             yield return new MenuItem
             {
                 Url = "/catalog",
@@ -38,14 +38,27 @@ namespace Paldi.Web.Models
                     x => new MenuItem { Url = "/catalog/" + x.Slug, Title = x.Name }
                 ).ToArray()
             };
-            yield return new MenuItem {Url = "/contacts", Title = "Контакты"};
+            yield return new MenuItem { Url = "/contacts", Title = "Контакты" };
         }
 
         private static IEnumerable<MenuItem> NavRightItems(NancyContext context)
         {
-            yield return (context.CurrentUser == null)
-                ? new MenuItem { Url = "/login", Title = "Войти" }
-                : new MenuItem { Url = "/logout", Title = "Выйти" };
+            if (context.CurrentUser == null)
+            {
+                yield return new MenuItem { Url = "/login", Title = "Войти" };
+                yield break;
+            }
+
+            yield return new MenuItem
+            {
+                Url = "/user",
+                Title = context.CurrentUser.UserName,
+                Items = new[]
+                {
+                    new MenuItem {Url = "/admin/changepassword", Title = "Сменить пароль"},
+                    new MenuItem {Url = "/logout", Title = "Выйти"},
+                }
+            };
         }
     }
 }

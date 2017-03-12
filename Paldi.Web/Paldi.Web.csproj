@@ -113,6 +113,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Catalog\Section.sshtml" />
+    <Content Include="Views\Admin\ChangePassword.sshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -138,6 +139,7 @@
     <Compile Include="Infrastructure\StatusCodeHandler.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Infrastructure\UserMapper.cs" />
+    <Compile Include="Models\AdminModule.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\NavigationModel.cs" />
@@ -150,7 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\js\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Paldi.Web.Migrations\Paldi.Web.Migrations.csproj">
