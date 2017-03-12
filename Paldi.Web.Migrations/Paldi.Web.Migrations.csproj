@@ -51,6 +51,24 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\FluentMigrator.Tools.1.6.2\tools\AnyCPU\40\FluentMigrator.dll">
+      <Link>FluentMigrator.1.6.2\FluentMigrator.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\FluentMigrator.Tools.1.6.2\tools\AnyCPU\40\FluentMigrator.Runner.dll">
+      <Link>FluentMigrator.1.6.2\FluentMigrator.Runner.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\FluentMigrator.Tools.1.6.2\tools\AnyCPU\40\Migrate.exe">
+      <Link>FluentMigrator.1.6.2\Migrate.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\packages\FluentMigrator.Tools.1.6.2\tools\AnyCPU\40\MySql.Data.dll">
+      <Link>FluentMigrator.1.6.2\MySql.Data.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

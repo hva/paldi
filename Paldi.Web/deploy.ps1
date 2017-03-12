@@ -1,8 +1,10 @@
-﻿C:\Users\Public\FluentMigrator.1.6.2\tools\Migrate.exe `
-    -a $env:APPLICATION_PATH\bin\Paldi.Web.Migrations.dll `
-    --db MySQL `
-    --configPath $env:APPLICATION_PATH\Web.config `
-    -c DefaultConnection
+﻿$path = $env:APPLICATION_PATH
+if (!$path) {
+    $path = $PSScriptRoot
+}
 
-# to run from solution root:
-# packages\FluentMigrator.1.6.2\tools\Migrate.exe -a Paldi.Web\bin\Paldi.Web.Migrations.dll --db MySQL --configPath Paldi.Web\Web.config -c DefaultConnection
+& $path\bin\FluentMigrator.1.6.2\Migrate.exe `
+    -a $path\bin\Paldi.Web.Migrations.dll `
+    --db MySQL `
+    --configPath $path\Web.config `
+    -c DefaultConnection
