@@ -3,6 +3,7 @@ using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
+using Paldi.Web.Models.Login;
 
 namespace Paldi.Web.Infrastructure
 {
@@ -19,6 +20,12 @@ namespace Paldi.Web.Infrastructure
             });
 
             base.ApplicationStartup(container, pipelines);
+        }
+
+        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
+        {
+            base.ConfigureApplicationContainer(container);
+            container.Register<LoginRequestValidator>().AsSingleton();
         }
 
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)

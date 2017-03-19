@@ -3,7 +3,6 @@ using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.ModelBinding;
 using Nancy.Security;
-using Paldi.Web.Data.Repos.Interfaces;
 using Paldi.Web.Models;
 using Paldi.Web.Models.Login;
 
@@ -11,7 +10,7 @@ namespace Paldi.Web.Modules
 {
     public class LoginModule : NancyModule
     {
-        public LoginModule(IUsersRepository usersRepository, Func<BaseModel> createModel)
+        public LoginModule(Func<BaseModel> createModel, LoginRequestValidator validator)
         {
             Get["/login"] = _ => View[
                 "Index.sshtml",
@@ -25,13 +24,9 @@ namespace Paldi.Web.Modules
                 this.ValidateCsrfToken();
 
                 var request = this.Bind<LoginRequest>();
-                if (!string.IsNullOrEmpty(request.Password))
+                if (validator.Validate(request).IsValid)
                 {
-                    Guid guid;
-                    if (usersRepository.TryLogin(request.Login, request.Password, out guid))
-                    {
-                        return this.LoginAndRedirect(guid);
-                    }
+                    return this.LoginAndRedirect(validator.LastGuid);
                 }
 
                 return View[
