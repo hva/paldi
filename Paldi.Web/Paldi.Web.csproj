@@ -139,10 +139,12 @@
     <Compile Include="Infrastructure\StatusCodeHandler.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Infrastructure\UserMapper.cs" />
+    <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\Login\LoginModel.cs" />
+    <Compile Include="Models\Login\LoginRequest.cs" />
     <Compile Include="Modules\AdminModule.cs" />
-    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
-    <Compile Include="Models\NavigationModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Modules\CatalogModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\LoginModule.cs" />

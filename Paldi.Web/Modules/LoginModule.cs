@@ -5,18 +5,17 @@ using Nancy.ModelBinding;
 using Nancy.Security;
 using Paldi.Web.Data.Repos.Interfaces;
 using Paldi.Web.Models;
+using Paldi.Web.Models.Login;
 
 namespace Paldi.Web.Modules
 {
     public class LoginModule : NancyModule
     {
-        private const string key = "Login";
-
-        public LoginModule(IUsersRepository usersRepository, Func<NavigationModel> createModel)
+        public LoginModule(IUsersRepository usersRepository, Func<BaseModel> createModel)
         {
             Get["/login"] = _ => View[
                 "Index.sshtml",
-                createModel().With(Context).With(key, new LoginModel())
+                createModel().With(new LoginModel())
             ];
 
             Get["/logout"] = _ => this.LogoutAndRedirect("/");
@@ -25,21 +24,23 @@ namespace Paldi.Web.Modules
             {
                 this.ValidateCsrfToken();
 
-                var model = this.Bind<LoginModel>();
-
-                if (!string.IsNullOrEmpty(model.Password))
+                var request = this.Bind<LoginRequest>();
+                if (!string.IsNullOrEmpty(request.Password))
                 {
                     Guid guid;
-                    if (usersRepository.TryLogin(model.Login, model.Password, out guid))
+                    if (usersRepository.TryLogin(request.Login, request.Password, out guid))
                     {
                         return this.LoginAndRedirect(guid);
                     }
                 }
 
-                model.HasError = true;
                 return View[
                     "Index.sshtml",
-                    createModel().With(Context).With(key, model)
+                    createModel().With(new LoginModel
+                    {
+                        HasError = true,
+                        Login = request.Login
+                    })
                 ];
             };
         }

@@ -20,5 +20,11 @@ namespace Paldi.Web.Infrastructure
 
             base.ApplicationStartup(container, pipelines);
         }
+
+        protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
+        {
+            base.ConfigureRequestContainer(container, context);
+            container.Register((c,o) => context.CurrentUser);
+        }
     }
 }

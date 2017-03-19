@@ -1,7 +1,7 @@
-﻿using System;
-using Nancy;
+﻿using Nancy;
 using Nancy.ErrorHandling;
 using Nancy.ViewEngines;
+using Paldi.Web.Data.Repos.Interfaces;
 using Paldi.Web.Models;
 
 namespace Paldi.Web.Infrastructure
@@ -9,12 +9,12 @@ namespace Paldi.Web.Infrastructure
     public class StatusCodeHandler : IStatusCodeHandler
     {
         private readonly IViewRenderer viewRenderer;
-        private readonly Func<NavigationModel> createModel;
+        private readonly ICatalogRepository catalogRepository;
 
-        public StatusCodeHandler(IViewRenderer viewRenderer, Func<NavigationModel> createModel)
+        public StatusCodeHandler(IViewRenderer viewRenderer, ICatalogRepository catalogRepository)
         {
             this.viewRenderer = viewRenderer;
-            this.createModel = createModel;
+            this.catalogRepository = catalogRepository;
         }
 
         public bool HandlesStatusCode(HttpStatusCode statusCode, NancyContext context)
@@ -24,7 +24,7 @@ namespace Paldi.Web.Infrastructure
 
         public void Handle(HttpStatusCode statusCode, NancyContext context)
         {
-            var response = viewRenderer.RenderView(context, "404.sshtml", createModel().With(context));
+            var response = viewRenderer.RenderView(context, "404.sshtml", new BaseModel(context.CurrentUser, catalogRepository));
             response.StatusCode = statusCode;
             context.Response = response;
         }

@@ -8,10 +8,10 @@ namespace Paldi.Web.Modules
 {
     public class CatalogModule : NancyModule
     {
-        public CatalogModule(Func<NavigationModel> createModel, ICatalogRepository catalogRepository)
+        public CatalogModule(Func<BaseModel> createModel, ICatalogRepository catalogRepository)
             : base("catalog")
         {
-            Get["/"] = _ => View["Index.sshtml", createModel().With(Context)];
+            Get["/"] = _ => View["Index.sshtml", createModel()];
 
             Get["/{section}"] = parameters =>
             {
@@ -21,8 +21,7 @@ namespace Paldi.Web.Modules
                     return HttpStatusCode.NotFound;
                 }
 
-                var model = createModel().With(Context).With("Section", section);
-                return View["Section.sshtml", model];
+                return View["Section.sshtml", createModel()];
             };
         }
     }

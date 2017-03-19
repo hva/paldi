@@ -6,9 +6,9 @@ namespace Paldi.Web.Modules
 {
     public class HomeModule : NancyModule
     {
-        public HomeModule(Func<NavigationModel> createModel)
+        public HomeModule(Func<BaseModel> createModel)
         {
-            Get["/"] = _ => View["Index.sshtml", createModel().With(Context)];
+            Get["/"] = _ => View["Index.sshtml", createModel()];
         }
     }
 }

@@ -1,29 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Nancy;
+using Nancy.Security;
 using Paldi.Web.Data.Repos.Interfaces;
 
 namespace Paldi.Web.Models
 {
-    public class NavigationModel : Dictionary<string, object>
+    public class BaseModel : Dictionary<string, object>
     {
         private readonly ICatalogRepository catalogRepository;
+        private readonly IUserIdentity userIdentity;
 
-        public NavigationModel(ICatalogRepository catalogRepository)
+        public BaseModel(IUserIdentity userIdentity, ICatalogRepository catalogRepository)
         {
+            this.userIdentity = userIdentity;
             this.catalogRepository = catalogRepository;
-        }
 
-        public NavigationModel With(NancyContext context)
-        {
             Add("Nav", NavItems().ToArray());
-            Add("NavRight", NavRightItems(context).ToArray());
-            return this;
+            Add("NavRight", NavRightItems().ToArray());
         }
 
-        public NavigationModel With(string key, object value)
+        public BaseModel With(IModel model)
         {
-            Add(key, value);
+            Add("Current", model);
             return this;
         }
 
@@ -41,9 +39,9 @@ namespace Paldi.Web.Models
             yield return new MenuItem { Url = "/contacts", Title = "Контакты" };
         }
 
-        private static IEnumerable<MenuItem> NavRightItems(NancyContext context)
+        private IEnumerable<MenuItem> NavRightItems()
         {
-            if (context.CurrentUser == null)
+            if (userIdentity == null)
             {
                 yield return new MenuItem { Url = "/login", Title = "Войти" };
                 yield break;
@@ -52,7 +50,7 @@ namespace Paldi.Web.Models
             yield return new MenuItem
             {
                 Url = "/user",
-                Title = context.CurrentUser.UserName,
+                Title = userIdentity.UserName,
                 Items = new[]
                 {
                     new MenuItem {Url = "/admin/changepassword", Title = "Сменить пароль"},
