@@ -1,8 +1,9 @@
 ﻿using System;
 using Nancy;
 using Nancy.Security;
+using Paldi.Web.Models;
 
-namespace Paldi.Web.Models
+namespace Paldi.Web.Modules
 {
     public class AdminModule : NancyModule
     {

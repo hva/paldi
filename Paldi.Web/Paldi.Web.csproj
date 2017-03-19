@@ -139,7 +139,7 @@
     <Compile Include="Infrastructure\StatusCodeHandler.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Infrastructure\UserMapper.cs" />
-    <Compile Include="Models\AdminModule.cs" />
+    <Compile Include="Modules\AdminModule.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\NavigationModel.cs" />
