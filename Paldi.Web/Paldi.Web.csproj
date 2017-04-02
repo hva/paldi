@@ -120,9 +120,7 @@
     </Content>
     <Content Include="Views\Catalog\Section.sshtml" />
     <Content Include="Views\Admin\ChangePassword.sshtml" />
-    <Content Include="Views\404.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Views\404.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
