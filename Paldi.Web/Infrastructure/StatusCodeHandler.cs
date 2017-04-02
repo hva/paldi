@@ -24,7 +24,7 @@ namespace Paldi.Web.Infrastructure
 
         public void Handle(HttpStatusCode statusCode, NancyContext context)
         {
-            var response = viewRenderer.RenderView(context, "404.sshtml", new BaseModel(context.CurrentUser, catalogRepository));
+            var response = viewRenderer.RenderView(context, "404.cshtml", new BaseModel(context.CurrentUser, catalogRepository));
             response.StatusCode = statusCode;
             context.Response = response;
         }
