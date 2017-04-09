@@ -3,6 +3,8 @@ using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
+using Paldi.Web.Data.Repos.Interfaces;
+using Paldi.Web.Models;
 using Paldi.Web.Models.Login;
 
 namespace Paldi.Web.Infrastructure
@@ -19,6 +21,8 @@ namespace Paldi.Web.Infrastructure
                 UserMapper = container.Resolve<IUserMapper>(),
             });
 
+            Navigation.Enable(container.Resolve<ICatalogRepository>());
+
             base.ApplicationStartup(container, pipelines);
         }
 
@@ -26,12 +30,6 @@ namespace Paldi.Web.Infrastructure
         {
             base.ConfigureApplicationContainer(container);
             container.Register<LoginRequestValidator>().AsSingleton();
-        }
-
-        protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
-        {
-            base.ConfigureRequestContainer(container, context);
-            container.Register((c,o) => context.CurrentUser);
         }
     }
 }

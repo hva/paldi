@@ -1,47 +1,36 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Nancy.Security;
+using Nancy.ViewEngines.Razor;
 using Paldi.Web.Data.Repos.Interfaces;
 
 namespace Paldi.Web.Models
 {
-    public class BaseModel : Dictionary<string, object>
+    public static class Navigation
     {
-        private readonly ICatalogRepository catalogRepository;
-        private readonly IUserIdentity userIdentity;
+        private static ICatalogRepository _catalogRepository;
 
-        public BaseModel(IUserIdentity userIdentity, ICatalogRepository catalogRepository)
+        public static void Enable(ICatalogRepository catalogRepository)
         {
-            this.userIdentity = userIdentity;
-            this.catalogRepository = catalogRepository;
-
-            Add("Nav", NavItems().ToArray());
-            Add("NavRight", NavRightItems().ToArray());
+            _catalogRepository = catalogRepository;
         }
 
-        public BaseModel With(IModel model)
-        {
-            Add("Current", model);
-            return this;
-        }
-
-        private IEnumerable<MenuItem> NavItems()
+        public static IEnumerable<MenuItem> NavItems(this NancyRazorViewBase view)
         {
             yield return new MenuItem { Url = "/service", Title = "Услуги" };
             yield return new MenuItem
             {
                 Url = "/catalog",
                 Title = "Каталог",
-                Items = catalogRepository.GetSections().Select(
+                Items = _catalogRepository.GetSections().Select(
                     x => new MenuItem { Url = "/catalog/" + x.Slug, Title = x.Name }
                 ).ToArray()
             };
             yield return new MenuItem { Url = "/contacts", Title = "Контакты" };
         }
 
-        private IEnumerable<MenuItem> NavRightItems()
+        public static IEnumerable<MenuItem> NavRightItems(this NancyRazorViewBase view)
         {
-            if (userIdentity == null)
+            if (view.Context.CurrentUser == null)
             {
                 yield return new MenuItem { Url = "/login", Title = "Войти" };
                 yield break;
@@ -50,7 +39,7 @@ namespace Paldi.Web.Models
             yield return new MenuItem
             {
                 Url = "/user",
-                Title = userIdentity.UserName,
+                Title = view.Context.CurrentUser.UserName,
                 Items = new[]
                 {
                     new MenuItem {Url = "/admin/changepassword", Title = "Сменить пароль"},

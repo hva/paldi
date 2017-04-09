@@ -1,0 +1,43 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase< Paldi.Web.Models.Login.LoginModel>
+
+@{
+    ViewBag.Title = "Вход &middot; Палди";
+}
+
+<h2 class="page-header">Вход</h2>
+
+@if (Model.HasError)
+{
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="alert alert-danger" role="alert">
+                <p>
+                    <strong>Не удается войти.</strong>
+                </p>
+                <p>
+                    Пожалуйста, проверьте правильность написания <strong>логина</strong> и <strong>пароля</strong>.
+                </p>
+            </div>
+        </div>
+    </div>
+}
+
+<form method="POST" class="form-horizontal">
+    <div class="form-group">
+        <div class="col-xs-12 col-md-4">
+            <input class="form-control" type="text" placeholder="логин" name="login" value="@Model.Login" autofocus>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12 col-md-4">
+            <input class="form-control" type="password" placeholder="пароль" name="password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
+    </div>
+    @Html.AntiForgeryToken()
+</form>
+

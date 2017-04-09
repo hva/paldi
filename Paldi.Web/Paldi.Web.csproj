@@ -109,15 +109,12 @@
     <Content Include="packages.config" />
     <Content Include="parameters.xml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Login\Index.sshtml" />
-    <Content Include="Views\_NavMenuItem.sshtml" />
-    <Content Include="Views\Catalog\Index.sshtml" />
     <Content Include="deploy.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Catalog\Section.sshtml" />
-    <Content Include="Views\Admin\ChangePassword.sshtml" />
-    <Content Include="Views\404.cshtml" />
+    <Content Include="Views\404.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Layout.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -125,6 +122,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Home\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\NavMenuItem.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Login\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Admin\ChangePassword.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Catalog\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Catalog\Section.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Web.Debug.config">
@@ -152,13 +164,12 @@
     <Compile Include="Infrastructure\StatusCodeHandler.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Infrastructure\UserMapper.cs" />
-    <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\Login\LoginModel.cs" />
     <Compile Include="Models\Login\LoginRequestValidator.cs" />
     <Compile Include="Models\Login\LoginRequest.cs" />
+    <Compile Include="Models\Navigation.cs" />
     <Compile Include="Modules\AdminModule.cs" />
     <Compile Include="Models\MenuItem.cs" />
-    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Modules\CatalogModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Modules\LoginModule.cs" />

@@ -1,17 +1,15 @@
-﻿using System;
-using Nancy;
+﻿using Nancy;
 using Paldi.Web.Data.Entities;
 using Paldi.Web.Data.Repos.Interfaces;
-using Paldi.Web.Models;
 
 namespace Paldi.Web.Modules
 {
     public class CatalogModule : NancyModule
     {
-        public CatalogModule(Func<BaseModel> createModel, ICatalogRepository catalogRepository)
+        public CatalogModule(ICatalogRepository catalogRepository)
             : base("catalog")
         {
-            Get["/"] = _ => View["Index.sshtml", createModel()];
+            Get["/"] = _ => View["Index.cshtml"];
 
             Get["/{section}"] = parameters =>
             {
@@ -21,7 +19,7 @@ namespace Paldi.Web.Modules
                     return HttpStatusCode.NotFound;
                 }
 
-                return View["Section.sshtml", createModel()];
+                return View["Section.cshtml", section];
             };
         }
     }
