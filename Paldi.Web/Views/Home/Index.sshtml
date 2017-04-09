@@ -1,6 +1,0 @@
-﻿@Master['Layout.sshtml']
-
-@Section['Title']Палди@EndSection
-
-@Section['Content']
-@EndSection

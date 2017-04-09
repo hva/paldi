@@ -1,14 +1,12 @@
-﻿using System;
-using Nancy;
-using Paldi.Web.Models;
+﻿using Nancy;
 
 namespace Paldi.Web.Modules
 {
     public class HomeModule : NancyModule
     {
-        public HomeModule(Func<BaseModel> createModel)
+        public HomeModule()
         {
-            Get["/"] = _ => View["Index.sshtml", createModel()];
+            Get["/"] = _ => View["Index.cshtml"];
         }
     }
 }

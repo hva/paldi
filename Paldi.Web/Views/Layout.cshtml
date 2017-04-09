@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@Section['Title']</title>
+    <title>@Html.Raw(ViewBag.Title)</title>
     <link rel="stylesheet" href="https://yastatic.net/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/content/css/styles.css" />
     <!--[if lt IE 9]>
@@ -26,14 +28,14 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @Each.Nav
+                    @*@Each.Nav
                         @Partial['_NavMenuItem.sshtml', @Current]
-                    @EndEach
+                    @EndEach*@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @Each.NavRight
+                    @*@Each.NavRight
                         @Partial['_NavMenuItem.sshtml', @Current]
-                    @EndEach
+                    @EndEach*@
                 </ul>
             </div>
         </div>
@@ -47,7 +49,7 @@
                 </a>
             </div>
             <div class="col-md-10 col-xs-12">
-                @Section['Content'];
+                @RenderBody()
             </div>
         </div>
     </div>

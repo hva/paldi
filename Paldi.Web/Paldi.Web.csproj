@@ -109,10 +109,7 @@
     <Content Include="packages.config" />
     <Content Include="parameters.xml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Home\Index.sshtml" />
     <Content Include="Views\Login\Index.sshtml" />
-    <Content Include="Views\404.sshtml" />
-    <Content Include="Views\Layout.sshtml" />
     <Content Include="Views\_NavMenuItem.sshtml" />
     <Content Include="Views\Catalog\Index.sshtml" />
     <Content Include="deploy.ps1">
@@ -121,6 +118,15 @@
     <Content Include="Views\Catalog\Section.sshtml" />
     <Content Include="Views\Admin\ChangePassword.sshtml" />
     <Content Include="Views\404.cshtml" />
+    <Content Include="Views\Layout.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Home\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
