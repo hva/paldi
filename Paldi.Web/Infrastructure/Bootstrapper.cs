@@ -4,7 +4,7 @@ using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
 using Paldi.Web.Data.Repos.Interfaces;
-using Paldi.Web.Models;
+using Paldi.Web.HtmlHelpers;
 using Paldi.Web.Models.Login;
 
 namespace Paldi.Web.Infrastructure
@@ -21,7 +21,7 @@ namespace Paldi.Web.Infrastructure
                 UserMapper = container.Resolve<IUserMapper>(),
             });
 
-            Navigation.Enable(container.Resolve<ICatalogRepository>());
+            NavigationExtensions.Enable(container.Resolve<ICatalogRepository>());
 
             base.ApplicationStartup(container, pipelines);
         }

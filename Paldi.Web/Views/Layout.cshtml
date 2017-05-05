@@ -1,4 +1,4 @@
-﻿@using Paldi.Web.Models
+﻿@using Paldi.Web.HtmlHelpers
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase
 
 <!DOCTYPE html>
@@ -29,13 +29,13 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @foreach (var x in this.NavItems())
+                    @foreach (var x in @Html.NavItems())
                     {
                         @Html.Partial("NavMenuItem.cshtml", x)
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @foreach (var x in this.NavRightItems())
+                    @foreach (var x in @Html.NavRightItems(this))
                     {
                         @Html.Partial("NavMenuItem.cshtml", x)
                     }

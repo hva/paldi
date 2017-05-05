@@ -2,10 +2,11 @@
 using System.Linq;
 using Nancy.ViewEngines.Razor;
 using Paldi.Web.Data.Repos.Interfaces;
+using Paldi.Web.Models;
 
-namespace Paldi.Web.Models
+namespace Paldi.Web.HtmlHelpers
 {
-    public static class Navigation
+    public static class NavigationExtensions
     {
         private static ICatalogRepository _catalogRepository;
 
@@ -14,7 +15,7 @@ namespace Paldi.Web.Models
             _catalogRepository = catalogRepository;
         }
 
-        public static IEnumerable<MenuItem> NavItems(this NancyRazorViewBase view)
+        public static IEnumerable<MenuItem> NavItems<T>(this HtmlHelpers<T> helpers)
         {
             yield return new MenuItem { Url = "/service", Title = "Услуги" };
             yield return new MenuItem
@@ -28,7 +29,7 @@ namespace Paldi.Web.Models
             yield return new MenuItem { Url = "/contacts", Title = "Контакты" };
         }
 
-        public static IEnumerable<MenuItem> NavRightItems(this NancyRazorViewBase view)
+        public static IEnumerable<MenuItem> NavRightItems<T>(this HtmlHelpers<T> helpers, NancyRazorViewBase view)
         {
             if (view.Context.CurrentUser == null)
             {
