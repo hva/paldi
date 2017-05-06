@@ -6,7 +6,8 @@ using Nancy.Security;
 using Paldi.Web.Data.Entities;
 using Paldi.Web.Data.Repos.Interfaces;
 using Paldi.Web.Infrastructure;
-using Paldi.Web.Infrastructure.Services.Interfaces;
+using Paldi.Web.Services.Configuration;
+using Paldi.Web.Services.Password;
 
 namespace Paldi.Web.Data.Repos
 {
@@ -15,9 +16,9 @@ namespace Paldi.Web.Data.Repos
         private readonly string connectionString;
         private readonly IPasswordService passwordService;
 
-        public UsersRepository(IConfiguration configuration, IPasswordService passwordService)
+        public UsersRepository(IConfig config, IPasswordService passwordService)
         {
-            connectionString = configuration.ConnectionString;
+            connectionString = config.ConnectionString;
             this.passwordService = passwordService;
         }
 

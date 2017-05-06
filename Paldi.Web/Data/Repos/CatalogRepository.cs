@@ -4,7 +4,7 @@ using Dapper;
 using MySql.Data.MySqlClient;
 using Paldi.Web.Data.Entities;
 using Paldi.Web.Data.Repos.Interfaces;
-using Paldi.Web.Infrastructure.Services.Interfaces;
+using Paldi.Web.Services.Configuration;
 
 namespace Paldi.Web.Data.Repos
 {
@@ -12,9 +12,9 @@ namespace Paldi.Web.Data.Repos
     {
         private readonly string connectionString;
 
-        public CatalogRepository(IConfiguration configuration)
+        public CatalogRepository(IConfig config)
         {
-            connectionString = configuration.ConnectionString;
+            connectionString = config.ConnectionString;
         }
 
         public bool TryFindSection(string slug, out CatalogSection section)

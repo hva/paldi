@@ -6,7 +6,7 @@ using Paldi.Web.Models;
 
 namespace Paldi.Web.HtmlHelpers
 {
-    public static class NavigationExtensions
+    public static class Navigation
     {
         private static ICatalogRepository _catalogRepository;
 

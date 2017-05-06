@@ -21,7 +21,7 @@ namespace Paldi.Web.Infrastructure
                 UserMapper = container.Resolve<IUserMapper>(),
             });
 
-            NavigationExtensions.Enable(container.Resolve<ICatalogRepository>());
+            Navigation.Enable(container.Resolve<ICatalogRepository>());
 
             base.ApplicationStartup(container, pipelines);
         }

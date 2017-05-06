@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
-using Paldi.Web.Infrastructure.Services.Interfaces;
 
-namespace Paldi.Web.Infrastructure.Services
+namespace Paldi.Web.Services.Password
 {
     public class PasswordService : IPasswordService
     {

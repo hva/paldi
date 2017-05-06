@@ -1,11 +1,10 @@
 ﻿using System.Configuration;
-using Paldi.Web.Infrastructure.Services.Interfaces;
 
-namespace Paldi.Web.Infrastructure.Services
+namespace Paldi.Web.Services.Configuration
 {
-    public class Configuration : IConfiguration
+    public class Config : IConfig
     {
-        public Configuration()
+        public Config()
         {
             ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
