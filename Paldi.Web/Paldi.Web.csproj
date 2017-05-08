@@ -167,7 +167,7 @@
     <Compile Include="Models\Login\LoginModel.cs" />
     <Compile Include="Models\Login\LoginRequestValidator.cs" />
     <Compile Include="Models\Login\LoginRequest.cs" />
-    <Compile Include="HtmlHelpers\Navigation.cs" />
+    <Compile Include="ViewHelpers\Navigation.cs" />
     <Compile Include="Modules\AdminModule.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Modules\CatalogModule.cs" />

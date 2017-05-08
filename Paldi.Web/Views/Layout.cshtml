@@ -1,4 +1,4 @@
-﻿@using Paldi.Web.HtmlHelpers
+﻿@using Paldi.Web.ViewHelpers
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
                     }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @foreach (var x in @Html.NavRightItems(this))
+                    @foreach (var x in @Html.NavRightItems())
                     {
                         @Html.Partial("NavMenuItem.cshtml", x)
                     }

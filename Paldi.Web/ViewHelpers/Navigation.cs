@@ -4,7 +4,7 @@ using Nancy.ViewEngines.Razor;
 using Paldi.Web.Data.Repos.Interfaces;
 using Paldi.Web.Models;
 
-namespace Paldi.Web.HtmlHelpers
+namespace Paldi.Web.ViewHelpers
 {
     public static class Navigation
     {
@@ -15,7 +15,7 @@ namespace Paldi.Web.HtmlHelpers
             _catalogRepository = catalogRepository;
         }
 
-        public static IEnumerable<MenuItem> NavItems<T>(this HtmlHelpers<T> helpers)
+        public static IEnumerable<MenuItem> NavItems(this HtmlHelpers helpers)
         {
             yield return new MenuItem { Url = "/service", Title = "Услуги" };
             yield return new MenuItem
@@ -29,9 +29,9 @@ namespace Paldi.Web.HtmlHelpers
             yield return new MenuItem { Url = "/contacts", Title = "Контакты" };
         }
 
-        public static IEnumerable<MenuItem> NavRightItems<T>(this HtmlHelpers<T> helpers, NancyRazorViewBase view)
+        public static IEnumerable<MenuItem> NavRightItems(this HtmlHelpers helpers)
         {
-            if (view.Context.CurrentUser == null)
+            if (!helpers.IsAuthenticated)
             {
                 yield return new MenuItem { Url = "/login", Title = "Войти" };
                 yield break;
@@ -40,7 +40,7 @@ namespace Paldi.Web.HtmlHelpers
             yield return new MenuItem
             {
                 Url = "/user",
-                Title = view.Context.CurrentUser.UserName,
+                Title = helpers.CurrentUser.UserName,
                 Items = new[]
                 {
                     new MenuItem {Url = "/admin/changepassword", Title = "Сменить пароль"},

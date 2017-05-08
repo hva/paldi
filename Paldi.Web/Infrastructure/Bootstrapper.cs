@@ -4,7 +4,7 @@ using Nancy.Bootstrapper;
 using Nancy.Security;
 using Nancy.TinyIoc;
 using Paldi.Web.Data.Repos.Interfaces;
-using Paldi.Web.HtmlHelpers;
+using Paldi.Web.ViewHelpers;
 using Paldi.Web.Models.Login;
 
 namespace Paldi.Web.Infrastructure
