@@ -1,24 +1,23 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using Dapper;
 using MySql.Data.MySqlClient;
 using Nancy.Security;
 using Paldi.Web.Data.Entities;
-using Paldi.Web.Data.Repos.Interfaces;
 using Paldi.Web.Infrastructure;
-using Paldi.Web.Services.Configuration;
-using Paldi.Web.Services.Password;
+using Paldi.Web.Services;
 
-namespace Paldi.Web.Data.Repos
+namespace Paldi.Web.Data.Repositories
 {
     public class UsersRepository : IUsersRepository
     {
         private readonly string connectionString;
         private readonly IPasswordService passwordService;
 
-        public UsersRepository(IConfig config, IPasswordService passwordService)
+        public UsersRepository(IPasswordService passwordService)
         {
-            connectionString = config.ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             this.passwordService = passwordService;
         }
 

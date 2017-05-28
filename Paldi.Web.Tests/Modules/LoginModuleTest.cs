@@ -2,9 +2,8 @@
 using Nancy;
 using Nancy.Security;
 using Nancy.Testing;
-using Paldi.Web.Data.Repos.Interfaces;
+using Paldi.Web.Data.Repositories;
 using Paldi.Web.Modules;
-using Paldi.Web.ViewHelpers;
 using Xunit;
 
 
@@ -17,13 +16,11 @@ namespace Paldi.Web.Tests.Modules
         public LoginModuleTest()
         {
             var usersRepo = A.Fake<IUsersRepository>();
-            var catalogRepo = A.Fake<ICatalogRepository>();
             var bootstrapper = new ConfigurableBootstrapper(with => with
                 .Module<LoginModule>()
                 .ApplicationStartup((container, pipelines) =>
                 {
                     Csrf.Enable(pipelines);
-                    Navigation.Enable(catalogRepo);
                 })
                 .Dependency(usersRepo)
             );
@@ -31,7 +28,7 @@ namespace Paldi.Web.Tests.Modules
         }
 
         [Fact]
-        public void Should_return_status_ok_when_route_exists()
+        public void ShouldHaveValidFormElementsOnGet()
         {
             var result = browser.Get("/login");
 

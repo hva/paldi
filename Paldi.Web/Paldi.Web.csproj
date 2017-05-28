@@ -152,15 +152,14 @@
   <ItemGroup>
     <Compile Include="Data\Entities\CatalogSection.cs" />
     <Compile Include="Data\Entities\User.cs" />
-    <Compile Include="Data\Repos\CatalogRepository.cs" />
-    <Compile Include="Data\Repos\Interfaces\ICatalogRepository.cs" />
-    <Compile Include="Data\Repos\Interfaces\IUsersRepository.cs" />
-    <Compile Include="Data\Repos\UsersRepository.cs" />
+    <Compile Include="Data\Repositories\CatalogRepository.cs" />
+    <Compile Include="Data\Repositories\ICatalogRepository.cs" />
+    <Compile Include="Data\Repositories\IUsersRepository.cs" />
+    <Compile Include="Data\Repositories\UsersRepository.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
-    <Compile Include="Services\Configuration\Configuration.cs" />
-    <Compile Include="Services\Configuration\IConfig.cs" />
-    <Compile Include="Services\Password\IPasswordService.cs" />
-    <Compile Include="Services\Password\PasswordService.cs" />
+    <Compile Include="Infrastructure\ContextExtensions.cs" />
+    <Compile Include="Services\IPasswordService.cs" />
+    <Compile Include="Services\PasswordService.cs" />
     <Compile Include="Infrastructure\StatusCodeHandler.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Infrastructure\UserMapper.cs" />

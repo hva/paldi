@@ -1,7 +1,7 @@
-﻿using Paldi.Web.Services.Password;
+﻿using Paldi.Web.Services;
 using Xunit;
 
-namespace Paldi.Web.Tests.Services.Password
+namespace Paldi.Web.Tests.Services
 {
     public class PasswordServiceTest
     {

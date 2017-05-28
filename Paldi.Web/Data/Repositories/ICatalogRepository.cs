@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Paldi.Web.Data.Entities;
 
-namespace Paldi.Web.Data.Repos.Interfaces
+namespace Paldi.Web.Data.Repositories
 {
     public interface ICatalogRepository
     {

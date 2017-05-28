@@ -76,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\LoginModuleTest.cs" />
-    <Compile Include="Services\Password\PasswordServiceTest.cs" />
+    <Compile Include="Services\PasswordServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

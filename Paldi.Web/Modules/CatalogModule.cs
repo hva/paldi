@@ -1,6 +1,6 @@
 ﻿using Nancy;
 using Paldi.Web.Data.Entities;
-using Paldi.Web.Data.Repos.Interfaces;
+using Paldi.Web.Data.Repositories;
 
 namespace Paldi.Web.Modules
 {

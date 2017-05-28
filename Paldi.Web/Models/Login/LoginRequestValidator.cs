@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentValidation;
-using Paldi.Web.Data.Repos.Interfaces;
+using Paldi.Web.Data.Repositories;
 
 namespace Paldi.Web.Models.Login
 {

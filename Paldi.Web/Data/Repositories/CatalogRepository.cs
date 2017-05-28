@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using Dapper;
 using MySql.Data.MySqlClient;
 using Paldi.Web.Data.Entities;
-using Paldi.Web.Data.Repos.Interfaces;
-using Paldi.Web.Services.Configuration;
 
-namespace Paldi.Web.Data.Repos
+namespace Paldi.Web.Data.Repositories
 {
     public class CatalogRepository : ICatalogRepository
     {
         private readonly string connectionString;
 
-        public CatalogRepository(IConfig config)
+        public CatalogRepository()
         {
-            connectionString = config.ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
 
         public bool TryFindSection(string slug, out CatalogSection section)
