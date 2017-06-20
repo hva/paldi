@@ -166,6 +166,8 @@
     <Compile Include="Models\Login\LoginModel.cs" />
     <Compile Include="Models\Login\LoginRequestValidator.cs" />
     <Compile Include="Models\Login\LoginRequest.cs" />
+    <Compile Include="ViewHelpers\Form.cs" />
+    <Compile Include="ViewHelpers\FormExtensions.cs" />
     <Compile Include="ViewHelpers\Navigation.cs" />
     <Compile Include="Modules\AdminModule.cs" />
     <Compile Include="Models\MenuItem.cs" />
@@ -175,6 +177,7 @@
     <Compile Include="Modules\VersionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewHelpers\TagBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\js\" />

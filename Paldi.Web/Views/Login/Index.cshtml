@@ -1,4 +1,5 @@
-﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Paldi.Web.Models.Login.LoginModel>
+﻿@using Paldi.Web.ViewHelpers
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Paldi.Web.Models.Login.LoginModel>
 
 @{
     ViewBag.Title = "Вход &middot; Палди";
@@ -40,4 +41,6 @@
     </div>
     @Html.AntiForgeryToken()
 </form>
-
+@*@(
+    Html.Form().WithText("login", @Model.Login, "логин")
+)*@ 
