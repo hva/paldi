@@ -1,4 +1,5 @@
-﻿using Nancy.ViewEngines.Razor;
+﻿using System.Collections.Generic;
+using Nancy.ViewEngines.Razor;
 
 namespace Paldi.Web.ViewHelpers
 {
@@ -14,6 +15,16 @@ namespace Paldi.Web.ViewHelpers
             ;
         }
 
+        public Form(KeyValuePair<string, string> token) : this()
+        {
+            var input = new TagBuilder("input")
+                .WithAttribute("type", "hidden")
+                .WithAttribute("name", token.Key)
+                .WithAttribute("value", token.Value)
+            ;
+            form.Add(input);
+        }
+
         public string ToHtmlString()
         {
             return form.ToString();
@@ -25,7 +36,7 @@ namespace Paldi.Web.ViewHelpers
                 .WithAttribute("type", "text")
                 .WithAttribute("name", name)
                 .WithAttribute("value", value)
-                .WithAttribute(placeholder, "autofocus")
+                .WithAttribute("placeholder", placeholder)
                 .WithCssClass("form-control")
             ;
 
@@ -39,9 +50,36 @@ namespace Paldi.Web.ViewHelpers
             return this;
         }
 
+        public Form WithPassword(string name, string placeholder)
+        {
+            var input = new TagBuilder("input")
+                .WithAttribute("type", "password")
+                .WithAttribute("name", name)
+                .WithAttribute("placeholder", placeholder)
+                .WithCssClass("form-control")
+            ;
+
+            var formGroup = DecorateWithFormGroup(input);
+            form.Add(formGroup);
+            return this;
+        }
+
+        public Form WithSubmit(string text)
+        {
+            var input = new TagBuilder("button")
+                .WithAttribute("type", "submit")
+                .WithCssClass("btn btn-primary")
+                .SetInnerText(text)
+            ;
+
+            var formGroup = DecorateWithFormGroup(input);
+            form.Add(formGroup);
+            return this;
+        }
+
         private static TagBuilder DecorateWithFormGroup(TagBuilder inner)
         {
-            var div1 = new TagBuilder("div").WithCssClass("col-xs-12 col-md-4");
+            var div1 = new TagBuilder("div").WithCssClass("col-xs-12 col-sm-4");
             var div2 = new TagBuilder("div").WithCssClass("form-group");
             return inner.DecorateWith(div1).DecorateWith(div2);
         }

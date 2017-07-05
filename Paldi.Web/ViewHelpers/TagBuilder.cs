@@ -27,12 +27,25 @@ namespace Paldi.Web.ViewHelpers
             return this;
         }
 
-        public TagBuilder WithCssClass(string name)
+        public TagBuilder WithCssClass(string className)
         {
-            tag.Add(new XAttribute("class", name));
+            var attr = tag.Attribute("class");
+            if (attr == null)
+            {
+                tag.Add(new XAttribute("class", className));
+            }
+            else
+            {
+                attr.Value = string.Concat(attr.Value, " ", className);
+            }
             return this;
         }
 
+        public TagBuilder SetInnerText(string text)
+        {
+            tag.Value = text;
+            return this;
+        }
 
         public TagBuilder Add(TagBuilder inner)
         {

@@ -23,24 +23,9 @@
     </div>
 }
 
-<form method="POST" class="form-horizontal">
-    <div class="form-group">
-        <div class="col-xs-12 col-md-4">
-            <input class="form-control" type="text" placeholder="логин" name="login" value="@Model.Login" autofocus>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-xs-12 col-md-4">
-            <input class="form-control" type="password" placeholder="пароль" name="password">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary">Войти</button>
-        </div>
-    </div>
-    @Html.AntiForgeryToken()
-</form>
-@*@(
-    Html.Form().WithText("login", @Model.Login, "логин")
-)*@ 
+@(
+    Html.Form(true)
+        .WithText("login", @Model.Login, "логин", true)
+        .WithPassword("password", "пароль")
+        .WithSubmit("Войти")
+)
